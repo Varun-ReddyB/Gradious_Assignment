@@ -1,0 +1,20 @@
+{
+  "name": "arjun-nodejs-assignment2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exercise1.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node exercise4.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1"
+  }
+}

@@ -21,12 +21,12 @@ app.get("/api/exercise2", (req, res) => {
 });
 
 // ✅ Exercise 3 (multiple routes inside)
-app.get("/api/exercise3/*", (req, res) => {
+app.get("/api/exercise3", (req, res) => {
   exercise3(req, res);
 });
 
 // ✅ Exercise 4 (multiple routes inside)
-app.get("/api/exercise4/*", (req, res) => {
+app.get("/api/exercise4", (req, res) => {
   exercise4(req, res);
 });
 

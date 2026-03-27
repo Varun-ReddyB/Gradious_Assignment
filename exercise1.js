@@ -2,9 +2,10 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
-const PORT = 80;
+const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
+
   if (req.url === "/api/exercise1") {
     const filePath = path.join(__dirname, "lib", "index.html");
 
@@ -18,12 +19,19 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { "Content-Type": "text/html" });
       res.end(data);
     });
-  } else {
+  }
+
+  else if (req.url === "/") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Server is running 🚀");
+  }
+
+  else {
     res.writeHead(404, { "Content-Type": "text/plain" });
     res.end("Not Found");
   }
 });
 
 server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

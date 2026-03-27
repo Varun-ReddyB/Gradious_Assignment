@@ -1,10 +1,7 @@
-const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
-const PORT = 80;
-
-const server = http.createServer((req, res) => {
+module.exports = (req, res) => {
   let fileName = "";
 
   if (req.url === "/api/exercise3/pages/home") {
@@ -31,8 +28,4 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/html" });
     res.end(data);
   });
-});
-
-server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+};

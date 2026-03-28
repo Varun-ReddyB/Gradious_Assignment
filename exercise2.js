@@ -6,7 +6,7 @@ module.exports = (req, res) => {
 
   fs.readFile(filePath, "utf-8", (err, data) => {
     if (err) {
-      res.writeHead(500, { "Content-Type": "text/plain" });
+      res.writeHead(500);
       res.end("Error reading file");
       return;
     }

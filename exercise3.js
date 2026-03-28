@@ -4,14 +4,17 @@ const path = require("path");
 module.exports = (req, res) => {
   let fileName = "";
 
-  if (req.url === "/api/exercise3/pages/home") {
+  if (req.url === "/pages/home") {
     fileName = "home.html";
-  } else if (req.url === "/api/exercise3/pages/about") {
+  } 
+  else if (req.url === "/pages/about") {
     fileName = "about.html";
-  } else if (req.url === "/api/exercise3/pages/contact") {
+  } 
+  else if (req.url === "/pages/contact") {
     fileName = "contact.html";
-  } else {
-    res.writeHead(404, { "Content-Type": "text/plain" });
+  } 
+  else {
+    res.writeHead(404);
     res.end("Page Not Found");
     return;
   }
@@ -20,7 +23,7 @@ module.exports = (req, res) => {
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
-      res.writeHead(500, { "Content-Type": "text/plain" });
+      res.writeHead(500);
       res.end("Error loading file");
       return;
     }

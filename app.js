@@ -11,28 +11,20 @@ const exercise4 = require("./exercise4");
 app.use(express.json());
 
 // ✅ Exercise 1
-app.get("/api/exercise1", (req, res) => {
-  exercise1(req, res);
-});
+app.get("/api/exercise1", exercise1);
 
 // ✅ Exercise 2
-app.get("/api/exercise2", (req, res) => {
-  exercise2(req, res);
-});
+app.get("/api/exercise2", exercise2);
 
-// ✅ Exercise 3 (multiple routes inside)
-app.get("/api/exercise3", (req, res) => {
-  exercise3(req, res);
-});
+// ✅ Exercise 3 (IMPORTANT FIX)
+app.use("/api/exercise3", exercise3);
 
-// ✅ Exercise 4 (multiple routes inside)
-app.get("/api/exercise4", (req, res) => {
-  exercise4(req, res);
-});
+// ✅ Exercise 4 (IMPORTANT FIX)
+app.use("/api/exercise4", exercise4);
 
-// ✅ Root route
+// ✅ Root
 app.get("/", (req, res) => {
-  res.send("All Exercises Running 🚀");
+  res.send("All Exercises Running");
 });
 
 const PORT = process.env.PORT || 3000;

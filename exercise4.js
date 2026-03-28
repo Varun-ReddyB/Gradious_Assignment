@@ -1,43 +1,32 @@
+const fs = require("fs");
 const path = require("path");
 
 module.exports = (req, res) => {
 
-  // Home
-  if (req.url === "/api/exercise4/home") {
-    const filePath = path.join(__dirname, "public", "home.html");
-    return sendFile(res, filePath);
+  if (req.url === "/home" || req.url === "/") {
+    return sendFile(res, "home.html");
   }
 
-  // About
-  if (req.url === "/api/exercise4/about") {
-    const filePath = path.join(__dirname, "public", "about.html");
-    return sendFile(res, filePath);
+  else if (req.url === "/about") {
+    return sendFile(res, "about.html");
   }
 
-  // Contact
-  if (req.url === "/api/exercise4/contact") {
-    const filePath = path.join(__dirname, "public", "contact.html");
-    return sendFile(res, filePath);
+  else if (req.url === "/contact") {
+    return sendFile(res, "contact.html");
   }
 
-  // Default → Home
-  if (req.url === "/api/exercise4") {
-    const filePath = path.join(__dirname, "public", "home.html");
-    return sendFile(res, filePath);
+  else {
+    res.writeHead(404);
+    res.end("Not Found");
   }
-
-  // Not matched
-  res.writeHead(404, { "Content-Type": "text/plain" });
-  res.end("Not Found");
 };
 
-// Helper function
-function sendFile(res, filePath) {
-  const fs = require("fs");
+function sendFile(res, fileName) {
+  const filePath = path.join(__dirname, "public", fileName);
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
-      res.writeHead(500, { "Content-Type": "text/plain" });
+      res.writeHead(500);
       res.end("Error loading file");
       return;
     }
